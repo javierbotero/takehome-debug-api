@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def path; end
 
   def register
-    User.create!(email: params[:email])
+    User.create!(email: params[:email], timezone: params[:timezone])
 
     render json: { success: true, message: "#{params[:email]} registered" }, status: 200
   rescue StandardError => e

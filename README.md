@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The solution to the problem is adding a counter_cache counter in the
+`User` model. And resetting it to 0 through a cron job at the beggining of each month depending the time zone the user is in.
 
-Things you may want to cover:
+To register a user:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+path: '/users/register'
+params: { email: 'jhondoe@mail.com', timezone: 'Australia/Sydney' }
