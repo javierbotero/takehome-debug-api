@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
@@ -19,7 +21,7 @@ RSpec.describe 'Users', type: :request do
 
   describe 'GET #root' do
     let(:user) { create(:user, email: 'javier@gmail.com') }
-    let!(:hits) { create_list(:hit, 10, user: user, endpoint: '/') }
+    let!(:hits) { create_list(:hit, 10, user:, endpoint: '/') }
     let(:json_response) { JSON.parse(response.body, symbolize_names: true) }
 
     it 'Checks the User#reset_monthly_hits! resets properly' do

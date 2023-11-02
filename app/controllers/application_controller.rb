@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::API
   before_action :authenticate_user!
   before_action :user_quota
@@ -6,15 +8,13 @@ class ApplicationController < ActionController::API
   private
 
   def user_quota
-    render json: { error: 'over quota' } if current_user.count_hits >= 10000
+    render json: { error: 'over quota' } if current_user.count_hits >= 10_000
   end
 
   def authenticate_user!
-    begin
-      current_user
-    rescue => e
-      render json: { error: 'invalid email' }, status: 401
-    end
+    current_user
+  rescue StandardError
+    render json: { error: 'invalid email' }, status: 401
   end
 
   def current_user
